@@ -19,17 +19,15 @@ export default class ImageGllery extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.text !== this.props.text) {
       this.setState({ pictures: [] });
-      this.setState({ numberPage: 1 });
     }
     if (
       prevProps.text !== this.props.text ||
-      prevState.numberPage !== this.state.numberPage
+      prevProps.page !== this.props.page
     ) {
       this.setState({ button: false });
       this.setState({ loading: true });
-      fetchPictures(this.props.text, this.state.numberPage)
+      fetchPictures(this.props.text, this.props.page)
         .then(pictures => {
-          console.log(this.state.numberPage);
           this.setState(prevState => ({
             pictures: [...this.state.pictures, ...pictures.hits],
           }));
@@ -58,12 +56,6 @@ export default class ImageGllery extends Component {
     if (e.code === 'Escape') {
       this.setState({ shownModal: false });
     }
-  };
-
-  onBtnClick = () => {
-    this.setState(prevState => ({
-      numberPage: prevState.numberPage + 1,
-    }));
   };
   openModal = url => {
     this.setState({ shownModal: true });
@@ -115,7 +107,7 @@ export default class ImageGllery extends Component {
             visible={true}
           />
         )}
-        {button && <Button addPictures={this.onBtnClick} />}
+        {button && <Button addPictures={this.props.onClick} />}
       </div>
     );
   }
