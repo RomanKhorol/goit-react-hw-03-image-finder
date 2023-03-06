@@ -1,6 +1,8 @@
+import { Btn } from './Button.styled';
+
 const Button = ({ addPictures }) => (
-  <button type="button" onClick={addPictures}>
+  <Btn type="button" onClick={addPictures}>
     Add pictures
-  </button>
+  </Btn>
 );
 export default Button;

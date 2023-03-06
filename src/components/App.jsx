@@ -13,20 +13,26 @@ export default class App extends Component {
 
   render() {
     return (
-      <div
-        style={{
-          height: '100vh',
-          display: 'flex',
-          justifyContent: 'flex-start',
-          flexDirection: 'column',
-
-          alignItems: 'center',
-          fontSize: 40,
-          color: '#010101',
-        }}
-      >
-        <Serchbar onSubmit={this.hadleFormsubmit} />
-        <ImageGllery text={this.state.text} />
+      <div>
+        <div
+          style={{
+            display: 'flex',
+            borderRadius: '4px',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+            backgroundColor: 'blue',
+            gap: '10px',
+            alignItems: 'center',
+            height: '65px',
+            fontSize: 40,
+            color: '#010101',
+          }}
+        >
+          <Serchbar onSubmit={this.hadleFormsubmit} />
+        </div>
+        <div>
+          <ImageGllery text={this.state.text} />
+        </div>
       </div>
     );
   }
