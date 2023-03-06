@@ -19,6 +19,7 @@ export default class ImageGllery extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.text !== this.props.text) {
       this.setState({ pictures: [] });
+      this.setState({ numberPage: 1 });
     }
     if (
       prevProps.text !== this.props.text ||
@@ -28,6 +29,7 @@ export default class ImageGllery extends Component {
       this.setState({ loading: true });
       fetchPictures(this.props.text, this.state.numberPage)
         .then(pictures => {
+          console.log(this.state.numberPage);
           this.setState(prevState => ({
             pictures: [...this.state.pictures, ...pictures.hits],
           }));
